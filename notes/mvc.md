@@ -1,5 +1,5 @@
 MVC - model, view, controller<br>
-Базовый структурный патерн
+MVC - UI patter to separate internal representations of data from the ways it is presented to/accepted from the user.
 <br>
 MVC - образует замкнутый поток управления внутри приложения. 
 <h1>Model</h1>
@@ -26,8 +26,5 @@ http-запрос - stateless запрос
 
 По учебнику логика в моделях<br>
 Избыточно сложный контроллер - это плохо<br>
-
-<h1>Патерны проектирования</h1><br>
-Service object (интерактор, saga) - инструмент для групировки бизнес логики вокруг одной составной продолжительной операции<br>
 
 
