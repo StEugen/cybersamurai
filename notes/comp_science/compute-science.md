@@ -1,21 +1,21 @@
 <h1>Representations</h1>
 Computers have zeros and ones (0 and 1)<br>
-000 is 0 
-001 is 1
-010 is 2 
+000 is 0 <br> 
+001 is 1 <br>
+010 is 2 <br>
 All of these is binary, decimal system
 Why? because computers use electicity, it has only on or off. Computers have transistors which switch on and off, so represent somthing. <br>
-4 2 1 
-0 0 0  principe of counting. We have 4 times 0, 2 times 0 and 1 times 0, so it is 0.
-4 2 1 
+4 2 1 <br>
+0 0 0  principe of counting. We have 4 times 0, 2 times 0 and 1 times 0, so it is 0. <br>
+4 2 1 <br>
 0 0 1 we have 4 times 0, 2 times 0 and 1 times 1, so it is 1<br>
 Computer use at least 8 transistors. <br>
 How computers represents letters? <br>
 We represent letters with numbers. A is 65, 01000001 <br>
 People decided that different formats represent different information using binary. like in excel it's about numbers (.xsls) and in photoshop about image (.png). So, we give computer hints to represent this information as we want.<br>
 ASCII - is standart for coding all this. <br> 
-72        73        33 
-H          I        !  
+72        73        33 <br>
+H          I        !  <br>
 01001000  01001001  00100001 <br>
 Computers are designed to understand it. <br>
 emojis also has some standart >> Unicode. <br>
