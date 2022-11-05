@@ -51,5 +51,3 @@ Boolean expression - True of False questions <br>
 Loops - directives to do something again and again <br>
 
 
-
-
