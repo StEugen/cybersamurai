@@ -4,6 +4,8 @@ from flask import Flask
 from flask import url_for
 from flask import request
 from flask import render_template
+from flask import send_file
+
 
 app = Flask(__name__, template_folder='./template')
 
@@ -16,13 +18,13 @@ def index():
         print(checked)
         if "docker" in checked:
             text = [
-                'sudo apt-get update', 'sudo apt-get install ca-certificates', 
-                'sudo apt-get install curl', 'sudo apt-get install gnupg',
+                'sudo apt-get update', 'sudo apt-get install -y ca-certificates', 
+                'sudo apt-get install -y curl', 'sudo apt-get install -y gnupg',
                 'sudo apt-get install lsb-release', 'sudo mkdir -p /etc/apt/keyrings',
                 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg',
                 'echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu',
                 'echo $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null',
-                'sudo apt-get update', 'sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin', 
+                'sudo apt-get update', 'sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin', 
             ]
             f.write('\n'.join(text))
             f.write('\n')
@@ -33,11 +35,16 @@ def index():
             ]
             f.write('\n'.join(text))
             f.write('\n')
-        print('http://')
+        return redirect(url_for('download'))
     return render_template('index.html')
+
+@app.route('/download', methods=['GET', 'POST'])
+def download():
+    path = './sh-files/test.sh'
+    return send_file(path, as_attachment=True)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0')
 
 
