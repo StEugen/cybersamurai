@@ -129,6 +129,14 @@ i < 3; - constant boolean expression check <br>
 i++; - update <br>
 Global declaration - int i = 0; <br>
 Local declaration - for (int i....) <br>
+<pre>
+int n;
+do
+{
+	n = get_int("Width: ");
+}
+while (n < 1);
+</pre>
 <h2>Functions</h2>
 <pre>
 void meow(void)
@@ -160,7 +168,10 @@ void meow(void)
 }
 </pre>
 <br>
+floating point imprecision <br>
+Truncation - when deviding int by int, and trying to store the result in something else, C will throw it <br>
 
+  
 
 
 

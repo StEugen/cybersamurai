@@ -4,8 +4,10 @@
 int main(void)
 {
 	// comment 
-	long x = get_int("x: ");
-	long y = get_int("y: ");
-	long z = x + y;
-	printf("%i\n", z);
+	int x = get_int("x: ");
+	int y = get_int("y: ");
+
+	float z = (float) x / (float) y; // (float) x converts x from int to float
+
+	printf("%.2f\n", z);
 }
