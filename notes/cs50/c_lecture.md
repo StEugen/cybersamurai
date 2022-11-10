@@ -1,4 +1,5 @@
 <h1>C lecture</h1>
+<code>clang test.c -o test -lcs50</code> <br>
 Correctness: Is code correct? <br> 
 Design: Is code well designed? <br>
 Style: Is code pretty written? <br>
@@ -62,6 +63,103 @@ get_[variable-type] <br>
 Same as in python <br>
 <br>
 counter = counter + 1; counter += 1; counter++; all the same <br>
+<h2>Conditions</h2>
+<pre>
+if (x < y)
+{
+	printf("x is less than y\n");
+}
+</pre>
+<br>
+<pre>
+if (condition)
+{
+	printf("");
+}
+else
+{
+	printf("");
+}
+</pre>
+<br>
+<pre>
+if (condition)
+{
+	printf("");
+}
+else if (other condition)
+{
+	printf("");
+}
+else (other condition)
+{
+	printf("");
+}
+</pre>
+<br> 
+Constat - variable that cannot be changed. Constants are made with <code>const type variable</code>. Constants can be made UPCASE so better seen in code <code>const int MINE</code><br>
+Single quotes '' for single character<br>
+Double quotes "" for string <br>
+<h2>Loops</h2>
+<pre>
+while (true)
+{
+	printf("");
+}
+</pre>
+<br>
+<pre>
+int i = 0;
+while (i < 3)
+{
+	printf("");
+	i++;
+}
+</pre> 
+<br>
+<pre>
+for (int i = 0; i < 3; i++)
+{
+	printf("");
+}
+</pre>
+<br>
+int i = 0; - initialization <br>
+i < 3; - constant boolean expression check <br>
+i++; - update <br>
+Global declaration - int i = 0; <br>
+Local declaration - for (int i....) <br>
+<h2>Functions</h2>
+<pre>
+void meow(void)
+{
+	printf("");
+}
+</pre>
+first void means type of function <br>
+meow means name of function <br>
+(void) means if function takes any inputs <br>
+C reads code from top to bottom <br>
+If you want to leave your function after <code>int main(void)</code> function, you need to specify it at the top: <br>
+<pre>
+void meow(void);
+
+int main(void)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        meow();
+    }
+    
+    
+}
+
+void meow(void)
+{
+    printf("meow\n");
+}
+</pre>
+<br>
 
 
 
