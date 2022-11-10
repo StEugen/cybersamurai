@@ -16,7 +16,7 @@ Hosted services:<br>
 7) File browser: for files transition <br>
 8) Navigation page: made by me, ig <br> 
 
-There is should be an idea, cherry if you will call it <br>
+There is should be an idea, something special<br>
 
 
  
