@@ -27,4 +27,5 @@ int main(void)
 3) assembling means to turn assembly code to zeros and ones<br>
 4) linking means to link all files (myfile.c, cs50.c and stdio.c) in one file <br>
 
+<h3>Debugging</h3>
 
