@@ -41,6 +41,4 @@ def get_forecast(place):
 	forecast = f" In {place} is currently {weather.get_detailed_status()}\n Temperature = {temperature} Celsius\n Clouds probability = {clouds}%\n Humidity is {humidity}%"
 	return forecast
 
-
-
 bot.infinity_polling()
