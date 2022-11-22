@@ -1,10 +1,9 @@
 import telebot
-from telebot import types
 from dotenv import load_dotenv
 load_dotenv()
 import os
 import pyowm
-from pyowm.exceptions import api_response_error
+import pyowm.exceptions 
 
 
 WEATHER_TOKEN=os.getenv('WEATHER_TOKEN')
