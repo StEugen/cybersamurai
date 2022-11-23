@@ -17,11 +17,8 @@ def post():
         print(article_name)
         text = request.form.get('article-text')
         print(text)
-        res = render_template(
-            'page.html', title=article_name,
-            article=text
-        )
-        return res
+        return render_template('index.html', article_name=article_name,
+        text=text)
 
     return render_template('posts.html')
 
