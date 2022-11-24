@@ -9,13 +9,15 @@
         <header>
             <h1> Test </h1>
         </header>
+        {% for post in posts %}
          <article>
             <h1>
-                {{ article_name }}
+                {{ post.title }}
             </h1>
             <p>
-                {{ text }}
+                {{ post.content|safe }}
             </p>
          </article>
+         {% endfor %}
     </body>
 </html>

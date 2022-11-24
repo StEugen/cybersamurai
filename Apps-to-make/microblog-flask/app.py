@@ -7,11 +7,11 @@ load_dotenv()
 app = Flask(__name__, template_folder='./template')
 app.secret_key='change'
 app.config['SQLALCHEMY_DATABASE_URI']=os.getenv('POSTGRESQL_DB')
-db = SQLAlchemy()
+db = SQLAlchemy(app)
 db.init_app(app)
 
 
-class BlogPost(db.Model):
+class blogpost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(30))
     content = db.Column(db.Text)
@@ -20,24 +20,24 @@ class BlogPost(db.Model):
 
 @app.route('/')
 def index():
-    posts = BlogPost.query.order_by(BlogPost.id.desc()).all()
+    posts = blogpost.query.order_by(blogpost.id.desc()).all()
     return render_template('index.html', posts=posts)
 
 
-@app.route('/post', methods=["POST", "GET"])
-def post():
-    if request.method == "POST":
-        print("Hell ya")
-        article_name = request.form.get('article-name')
-        print(article_name)
-        text = request.form.get('article-text')
-        print(text)
-        return render_template('index.html', article_name=article_name,
-        text=text)
+@app.route('/add')
+def add():
+    return render_template('addpost.html')
 
-    return render_template('posts.html')
+@app.route('/addpost', methods=["POST", "GET"])
+def addpost():
+    title = request.form['title']
+    content = request.form['content']
+    post = blogpost(title=title, content=content)
+    
+    db.session.add(post)
+    db.session.commit()
 
-
+    return redirect(url_for('index'))
 
 
 
