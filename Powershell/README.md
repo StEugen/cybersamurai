@@ -1,1 +1,0 @@
-Here you can find different powershell scripts for automation, there are comments about what this scripts do
