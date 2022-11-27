@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport", content="width=device-width, initial-scale=1.0" />
+        <title> My Flask Blog</title>
+    </head>
+    <body>
+        <header>
+            <h1> Test </h1>
+        </header>
+         <form method="POST" action="{{ url_for('addpost') }}">
+            <input type="text"  placeholder="Title" name="title" 
+            required data-validation-required-message="Please enter a title."><br><br>
+            <textarea rows="5" cols="20" placeholder="Blog content" name="content" 
+            required data-validation-required-message="Please enter text."></textarea><br>
+            <button type="submit">Send</button>
+        </form>
+    </body>
+</html>

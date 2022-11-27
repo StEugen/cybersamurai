@@ -1,0 +1,1 @@
+So, how this should work, index.html page with news. On page post news can be added.
