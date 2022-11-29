@@ -64,7 +64,7 @@ This array will store 3 integers. <br>
 scores[0] = 72; <br>
 scores[1] = 73; <br>
 scores[2] = 33; <br>
-
+</pre>
 
 
 
