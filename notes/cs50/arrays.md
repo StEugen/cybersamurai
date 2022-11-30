@@ -65,6 +65,13 @@ scores[0] = 72; <br>
 scores[1] = 73; <br>
 scores[2] = 33; <br>
 </pre>
+string is an array of chars. How computer understands where one string ends and other begins<br>
+The answer is to use \0 - NULL - no character. This is what separates strings. So, computer uses 4 bytes to store 3 bytes of "HI!" because of NULL<br>
+<pre>
+string s = "HI!";
+printf("%i %i %i %i\n",  s[0], s[1], s[2], s[3]);
+</pre>
+This code will show 72 73 33 0 - H I ! NULL <br>
 
 
 
