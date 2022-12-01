@@ -87,4 +87,12 @@ int main(void){
 }
 </pre>
 <br>
+<h2>Command-line arguments</h2>
+void means that program do not take command line arguments<br>
+<code>int main(int argc, string argv[])</code> <br> 
+Int argc means argument count and stores how many words user typed. String  argv means argument vector (array of words human typed at the prompt)<br>
+<pre>
+#include <cs50.h>
+#include <stdio.h>
 
+int main 
