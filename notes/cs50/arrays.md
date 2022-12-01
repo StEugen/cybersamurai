@@ -95,4 +95,23 @@ Int argc means argument count and stores how many words user typed. String  argv
 #include <cs50.h>
 #include <stdio.h>
 
-int main 
+int main(int argc, string argv[]){
+	printf("Hello, %s\n", argv[1]);
+}
+</pre>
+<h2>Exit status</h2>
+<pre>
+#include <cs50.h>
+#include <stdio.h>
+
+int main(int argc, string argv[]){
+	if (argc !=2){
+		printf("Missing\n");
+		return 1;
+	} 
+	printf("hello, %s\n", argv[1]);
+	return 0;
+}
+</pre>
+<br>
+if we return 1, that means something went wrong.<br>
