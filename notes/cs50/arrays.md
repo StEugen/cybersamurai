@@ -72,6 +72,19 @@ string s = "HI!";
 printf("%i %i %i %i\n",  s[0], s[1], s[2], s[3]);
 </pre>
 This code will show 72 73 33 0 - H I ! NULL <br>
+<pre>
+#include <stdio.h>
+#include <cs50.h>
 
-
+int main(void){
+	name = get_string("Name" )
+	
+	int i = 0;
+	while (name[i] != "\n"){
+		i++;
+	}
+	printf("%i \n", i);
+}
+</pre>
+<br>
 
