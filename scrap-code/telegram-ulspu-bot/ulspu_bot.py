@@ -1,17 +1,29 @@
-from aiogram import Bot, Dispatcher, types, executor
-from aiohttp import web 
+import telebot 
 from config import BOT_API_TOKEN
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
+from telebot import types
+from test_json import *
 
+bot = telebot.TeleBot(BOT_API_TOKEN)
 
-bot = Bot(token=BOT_API_TOKEN)
-storage = MemoryStorage()
-dp = Dispatcher(bot, storage=storage)
+@bot.message_handler(commands=['start'])
+def start(message):
+    keyboard = types.InlineKeyboardMarkup()
+    buttons = [
+        types.InlineKeyboardButton(text="15-16 weeks", callback_data="test")
+    ]
+    keyboard.add(*buttons)
+    bot.send_message(message.chat.id, 'Choose a week', reply_markup=keyboard)
 
-@dp.message_handler(commands="start")
-async def start(message: types.Message):
-    await message.answer(text='Choose a day')
+@bot.message_handler(commands=['help'])
+def help(message):
+    bot.send_message(message.chat.id, 'Help displayed')
+
+@bot.callback_query_handler(lambda query: query.data == 'test')
+def test(query):
+    msg = get_json()
+    bot.send_message(query.message.chat.id, msg)
+
 
 
 if __name__ == "__main__":
-    executor.start_polling(dp, skip_updates=True)
+    bot.infinity_polling()
