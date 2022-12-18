@@ -1,7 +1,7 @@
 import telebot 
 from config import BOT_API_TOKEN
 from telebot import types
-from test_json import *
+from test_json import get_json, send_json
 
 bot = telebot.TeleBot(BOT_API_TOKEN)
 
@@ -20,7 +20,7 @@ def help(message):
 
 @bot.callback_query_handler(lambda query: query.data == 'test')
 def test(query):
-    msg = get_json()
+    msg = send_json()
     bot.send_message(query.message.chat.id, msg)
 
 
