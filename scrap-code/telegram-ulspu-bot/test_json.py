@@ -1,4 +1,4 @@
-import json, pprint
+import json, pprint, re
 from urllib.request import Request, urlopen
 
 
@@ -9,17 +9,12 @@ def get_json():
         url=Lukianov,
         headers={'User-Agent': 'Mozila/5.0'})
     site = urlopen(req)
-    json_dump = json.dumps(site)
-    dic = json.loads(json_dump)
-    print(dic[0])
     data = json.load(site)
-    #pprint.pprint(data)
-    #return data
-
+    dictionary = []
     for item in data:
-        #text = f'date: {item["location"]}'
-        text = data
-        print(text)
+        for i in data[item]:
+            text = f'date: {item},\n location: {i["location"]}, group: {i["teachers"]}, time: {i["time"]}, subject: {i["subject"]}, type: {i["type"]}'
+            text = re.sub('T13:00:00', '', text)
+            return text
 
-
-get_json()
+#get_json()
