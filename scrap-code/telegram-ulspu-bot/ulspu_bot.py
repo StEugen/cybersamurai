@@ -7,8 +7,6 @@ from dates import *
 
 bot = telebot.TeleBot(BOT_API_TOKEN)
 
-
-
 @bot.message_handler(commands=['start'])
 def start(message):
     msg = bot.reply_to(message, 'Choose a week', reply_markup=keyboard)
