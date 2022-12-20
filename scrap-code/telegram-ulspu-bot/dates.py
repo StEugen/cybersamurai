@@ -7,4 +7,3 @@ with open('files/dates', 'r') as f:
 keyboard = types.ReplyKeyboardMarkup(row_width=1)
 for item in dates:
     keyboard.add(item)
-
