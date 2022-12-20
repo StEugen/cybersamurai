@@ -3,8 +3,6 @@ from urllib.request import Request, urlopen
 from dates import dates
 
 
-
-
 ## берет необходимую json ссылку и генирирует на основе ее читабельный формат
 def get_json(text):
     f = open('files/test', 'w')
