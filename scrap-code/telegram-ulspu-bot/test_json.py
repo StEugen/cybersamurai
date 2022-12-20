@@ -8,9 +8,8 @@ def get_json(text):
     f = open('files/test', 'w')
     id = f'https://www.ulspu.ru/students/schedule/prepod/cb4ba39a83855bae2c56ff82453c7511-'
     item = text[:-3]
-    to_msg = id+f'{item}.json'
     req = Request(
-        url=to_msg,
+        url=id+f'{item}.json',
         headers={'User-Agent': 'Mozila/5.0'})
     site = urlopen(req)
     data = json.load(site)
