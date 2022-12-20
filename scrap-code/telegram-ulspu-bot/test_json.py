@@ -3,8 +3,8 @@ from urllib.request import Request, urlopen
 from dates import dates
 
 
-## берет необходимую json ссылку и генирирует на основе ее читабельный формат
 def get_json(text):
+    """ берет json ссылку и генерирует читабельный формат """
     f = open('files/test', 'w')
     id = f'https://www.ulspu.ru/students/schedule/prepod/cb4ba39a83855bae2c56ff82453c7511-'
     item = text[:-3]
@@ -19,8 +19,8 @@ def get_json(text):
             text = re.sub('T13:00:00', '', text)
             f.write(text)
 
-## мусорная функция, возвращает переменную text, в которой хранится расписание
 def take_info():
+    """ мусорная функция, возвращает переменную text, в которой расписание лежит """
     f = open('files/test', 'r')
     text = f.read()
     return text
