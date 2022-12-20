@@ -4,7 +4,7 @@ from dates import dates
 
 
 def get_json(text):
-    """ берет json ссылку и генерирует читабельный формат """
+    """ takes url for json and generates readable text """
     f = open('files/test', 'w')
     id = f'https://www.ulspu.ru/students/schedule/prepod/cb4ba39a83855bae2c56ff82453c7511-'
     item = text[:-3]
@@ -20,7 +20,7 @@ def get_json(text):
             f.write(text)
 
 def take_info():
-    """ мусорная функция, возвращает переменную text, в которой расписание лежит """
+    """ trash function just to return text where timetable is"""
     f = open('files/test', 'r')
     text = f.read()
     return text
