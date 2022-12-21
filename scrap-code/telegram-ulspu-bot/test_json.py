@@ -2,6 +2,7 @@ import json, pprint, re
 from urllib.request import Request, urlopen
 
 def teacher_json():
+    """ should read users input and produce id of teacher """
     user_input = input()
     req = Request(
         url='https://www.ulspu.ru/students/schedule/prepod/groups-15.json',
