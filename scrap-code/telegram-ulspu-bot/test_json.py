@@ -3,20 +3,31 @@ from urllib.request import Request, urlopen
 
 def teacher_json():
     """ should read users input and produce id of teacher """
-    user_input = input()
+    f = open('files/teachers', 'w')
+    #sname = input()
     req = Request(
         url='https://www.ulspu.ru/students/schedule/prepod/groups-15.json',
         headers={'User-Agent': 'Mozila/5.0'}
     )
     site = urlopen(req)
     data = json.load(site)
-    
+    text = f'{data}'
+    f.write(text)
+    f.write('\n')
+    #for item in data:
+    #    for i in data[item]:
+    #        if sname == i["text"]:
+    #            print("hooray")
+    #            break
+    #        else:
+    #            print("fuck")
+    #            break
+teacher_json()
 
 def get_json(text):
     """ takes url for json and generates readable text """
     f = open('files/test', 'w')
     id = f'https://www.ulspu.ru/students/schedule/prepod/cb4ba39a83855bae2c56ff82453c7511-'
-    #item = text[:-3]
     req = Request(
         url=id+f'{text}.json',
         headers={'User-Agent': 'Mozila/5.0'})
