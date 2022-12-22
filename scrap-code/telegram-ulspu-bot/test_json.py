@@ -1,39 +1,28 @@
 import json, pprint, re
 from urllib.request import Request, urlopen
 
-def teacher_json():
+def teacher_json(sname, week):
     """ should read users input and produce id of teacher """
-    f = open('files/teachers', 'w')
-    week = input("Week: ")
-    sname = input("Sname: ")
+    f = open('files/jsonhere', 'w')
     req = Request(
         url=f'https://www.ulspu.ru/students/schedule/prepod/groups-{week}.json',
         headers={'User-Agent': 'Mozila/5.0'}
     )
     site = urlopen(req)
     data = json.load(site)
-    #text = f'{data}'
-    #f.write(text)
-    #f.write('\n')
     for item in data['data']:
         if sname == item['text']:
-            #print("Hell ya")
-            #text = item['text']
             id = item['id']
-            #f.write(text)
-            #f.write('\n')
             f.write(id)
             break
 
-
-teacher_json()
-
-def get_json(text):
+def get_json():
     """ takes url for json and generates readable text """
-    f = open('files/test', 'w')
-    id = f'https://www.ulspu.ru/students/schedule/prepod/cb4ba39a83855bae2c56ff82453c7511-'
+    f = open('files/timetable', 'w')
+    f2 = open('files/jsonhere', 'r')
+    id = f2.read()
     req = Request(
-        url=id+f'{text}.json',
+        url=f'https://www.ulspu.ru/students/schedule/prepod/{id}.json',
         headers={'User-Agent': 'Mozila/5.0'})
     site = urlopen(req)
     data = json.load(site)
@@ -45,7 +34,7 @@ def get_json(text):
 
 def take_info():
     """ trash function just to return text where timetable is"""
-    f = open('files/test', 'r')
+    f = open('files/timetable', 'r')
     text = f.read()
     return text
         

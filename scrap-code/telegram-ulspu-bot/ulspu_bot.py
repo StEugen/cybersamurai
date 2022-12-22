@@ -1,7 +1,7 @@
 import telebot
 from config import BOT_API_TOKEN
 from telebot import types
-from test_json import get_json, take_info
+from test_json import get_json, take_info, teacher_json
 from dates import *
 
 
@@ -17,9 +17,11 @@ def help(message):
     bot.send_message(message.chat.id, 'Help displayed')
 
 
-def dates(message): 
-    user_input = message.text
-    get_json(user_input)
+def dates(message):
+    sname = '' 
+    week = message.text
+    teacher_json(sname, week)
+    get_json()
     msg = take_info()
     bot.send_message(message.chat.id, msg)
 
