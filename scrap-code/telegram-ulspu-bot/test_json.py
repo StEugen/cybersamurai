@@ -17,7 +17,7 @@ def teacher_json(sname, week):
             break
 
 def get_json():
-    """ takes url for json and generates readable text """
+    """ takes id, makes url for json and generates readable text """
     f = open('files/timetable', 'w')
     f2 = open('files/jsonhere', 'r')
     id = f2.read()
