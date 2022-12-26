@@ -1,7 +1,7 @@
 import telebot
 from config import BOT_API_TOKEN
 from telebot import types
-from test_json import get_json, take_info, teacher_json
+from workjson import get_json, take_info, teacher_json
 from dates import *
 global sname 
 
