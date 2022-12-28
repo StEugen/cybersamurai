@@ -1,0 +1,20 @@
+{
+  "name": "todo-nodejs",
+  "version": "1.0.0",
+  "description": "to-do app ",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "StEugen",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
