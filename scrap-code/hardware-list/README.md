@@ -5,3 +5,5 @@ STEP ONE
 
 STEP TWO
 1) take from .xslx
+
+search by id, search by cabinet
