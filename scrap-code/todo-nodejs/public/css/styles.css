@@ -4,10 +4,21 @@ html, body{
 
 h1{
     text-align: center;
+    padding-top: 200px;
+}
+
+form{
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 ul{
     list-style-type: none;
+    border: 1px solid black;
+    background-color: rgba(0, 0, 0, 0.6);
+    max-width: 200px;
+    border-radius: 20px;
+    margin: auto;
 }
 
 ul > li{
