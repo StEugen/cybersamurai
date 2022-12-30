@@ -5,7 +5,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__, template_folder='./template')
-
+app.secret_key = 'channge-later'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('POSTREGSQL_DB')
+db = SQLAlchemy(app)
+db.init_app(app)
 
 
 @app.route('/')
