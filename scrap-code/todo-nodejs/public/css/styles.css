@@ -24,3 +24,8 @@ ul{
 ul > li{
     text-decoration: none;
 }
+
+p{
+    display: inline;
+    color: aliceblue;
+}

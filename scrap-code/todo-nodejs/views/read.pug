@@ -11,19 +11,7 @@
     <body>
         <h1>Add To Do</h1>
         <main>
-            <form action="/addTask" method="POST">
-                <input type="text" name="content" />
-                <button type="submit">submit</button>
-            </form>
-            <ul>
-                <% for(var i=0; i <todos.length; i++) {%>
-                <% if (todos[i].done == false){ %>
-                <li>
-                     <input type="checkbox" name="todo" value="<%= todos[i].id%>" /> <%= todos.[i].note%>
-                </li>
-                <%} %>
-                <%} %>
-            </ul>
+            
         </main>
     </body>
 </html>
