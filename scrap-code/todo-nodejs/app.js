@@ -14,7 +14,6 @@ app.get('/', async (req,res) => {
 })
 
 app.post('/addToDo', async (req, res) => {
-    console.log(req.body);
     const query = 'INSERT INTO notes(note) VALUES($1);';
     const value = [req.body.note]
     const {rows} = await db.query(query, value)

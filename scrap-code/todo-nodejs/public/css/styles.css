@@ -16,7 +16,7 @@ ul{
     list-style-type: none;
     border: 1px solid black;
     background-color: rgba(0, 0, 0, 0.6);
-    max-width: 200px;
+    max-width: 400px;
     border-radius: 20px;
     margin: auto;
 }
@@ -28,4 +28,10 @@ ul > li{
 p{
     display: inline;
     color: aliceblue;
+}
+
+i{ 
+    margin-top: 2px;
+    position: absolute;
+    right: 500px;
 }
