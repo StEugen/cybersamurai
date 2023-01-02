@@ -2,8 +2,6 @@ const express = require("express")
 const db = require('./config/db')
 const app = express()
 
-
-
 app.use("/static", express.static("public"))
 app.use(express.urlencoded({ extended: true }))
 app.set("view engine", "pug")
@@ -25,9 +23,11 @@ app.post('/addToDo', async (req, res) => {
 })
 
 
-app.post('/delete', async (req,res) => {
-    const query = 'DELETE FROM notes WHERE note = $1;';
-    const value
+app.get('/delete/:id', async (req,res) => {
+    const query = 'DELETE FROM notes WHERE id=$1;';
+    const value = [req.params.id];
+    const { result } = await db.query(query, value)
+    res.redirect("/")
 })
 
 
