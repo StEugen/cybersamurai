@@ -5,5 +5,4 @@ CREATE TABLE notes(
     id SERIAL PRIMARY KEY NOT NULL,
     note TEXT,
     done BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP
 )
