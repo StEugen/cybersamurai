@@ -18,7 +18,6 @@ app.post('/addToDo', async (req, res) => {
     const query = 'INSERT INTO notes(note) VALUES($1);';
     const value = [req.body.note]
     const {rows} = await db.query(query, value)
-    console.log(rows)
     res.redirect('/')
 })
 
