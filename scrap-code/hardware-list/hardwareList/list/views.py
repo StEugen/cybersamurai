@@ -4,7 +4,7 @@ from list.models import *
 
 def index(request):
     data = cabinets.objects.all()
-    item = {
+    context = {
         'cabinets': data
     }
-    return render(request, 'index.html', item)
+    return render(request, 'index.html', context)

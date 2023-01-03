@@ -4,21 +4,25 @@
 <link rel="stylesheet" type="text/css" href="{% static 'list/index.css' %}" />
 <script src="{% static 'index.js' %}"></script>
 <main>
+    {% csrf_token %}
+    {% for item in cabinets %}
+
     <div id="list">
         <ul>
-            {% csrf_token %}
-            {% for item in cabinets %}
             <li>
                 <button>{{ item.cabinet }}</button>
             </li>
-            {% endfor %}
         </ul>
     </div>
+    
     <div id="text">
-        <p>text1</p>
+        {% for thing in item.hard%}
+        <p>
+            {{ thing }}
+        </p>
+        {% endfor %}
     </div>
-    <div id="text2">
-        <p>text2</p>
-    </div>
+
+    {% endfor %}
 </main>
 {% endblock %}
