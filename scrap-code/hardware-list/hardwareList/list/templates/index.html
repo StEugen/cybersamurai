@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'list/index.css' %}" />
+<script src="{% static 'index.js' %}"></script>
+<main>
+    <div id="list">
+        <ul>
+            {% csrf_token %}
+            {% for item in cabinets %}
+            <li>
+                <button>{{ item.cabinet }}</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="text">
+        <p>text1</p>
+    </div>
+    <div id="text2">
+        <p>text2</p>
+    </div>
+</main>
+{% endblock %}

@@ -11,3 +11,8 @@ html, body{
     height: 100%;
     padding: 20px 0;
 }
+
+#text, #text2{
+    display: none;
+    text-align: center;
+}
