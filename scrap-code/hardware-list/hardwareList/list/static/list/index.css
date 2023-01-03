@@ -2,14 +2,28 @@ html, body{
     background-color: #D9D9D9;
 }
 
-#list{
+.blue{
+    width: 200px;
+    height: 200px;
     background: rgb(5, 68, 104);
-    position: fixed;
+    position: absolute;
+    z-index: 1;
+}
+
+.blue .list{
+    display: block;
     top: 0;
     left: 0;
     width: 225px;
-    height: 100%;
-    padding: 20px 0;
+}
+
+.list{
+    z-index: 2; 
+    position: absolute;
+}
+
+li{
+    margin-bottom: 30px;
 }
 
 #text, #text2{

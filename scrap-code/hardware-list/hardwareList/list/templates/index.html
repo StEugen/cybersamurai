@@ -5,16 +5,14 @@
 <script src="{% static 'index.js' %}"></script>
 <main>
     {% csrf_token %}
+    <div class="blue""></div>
     {% for item in cabinets %}
 
-    <div id="text">
-        <ul>
+        <ul class="list">
             <li>
                 <button>{{ item.cabinet }}</button>
             </li>
         </ul>
-        
-    </div>
     
     <div id="text">
         {% for thing in item.hard %}
