@@ -4,7 +4,7 @@ html, body{
 
 .blue{
     width: 200px;
-    height: 200px;
+    height: 100%;
     background: rgb(5, 68, 104);
     position: absolute;
     z-index: 1;
