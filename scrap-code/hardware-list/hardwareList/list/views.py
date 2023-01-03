@@ -7,4 +7,5 @@ def index(request):
     context = {
         'cabinets': data
     }
+
     return render(request, 'index.html', context)

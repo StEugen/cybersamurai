@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
 class cabinets(models.Model):
-    cabinet = models.IntegerField(unique=True, null=False)
+    cabinet = models.TextField(unique=True, null=False)
     hard = ArrayField(
         models.TextField(unique=True, null=False)
     )
