@@ -8,3 +8,7 @@ function show(param){
         document.getElementById('text').style.display = 'none'
     }
 }
+
+function showThing(thing){
+    document.getElementById('thing').innerHTML = thing;
+}
