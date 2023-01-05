@@ -13,7 +13,7 @@
 </script>
 <main>
     {% csrf_token %}
-
+    <a href="cabinet_adding/"><i class="fa-regular fa-square-plus"></i></a>
     {% for item in cabinets %}
         <button class="button">{{ item.cabinet }}</button>
     {% endfor %}

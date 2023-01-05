@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+    <form action="add" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="cabinet num"  name="cab_num"/>
+        <input type="text"placeholder="nums" name="nums" />
+        <button type="submit">Submit</button>
+    </form>
+</main>
+{% endblock %}
