@@ -17,7 +17,6 @@ def add(request):
         cab = request.POST.get('cab_num')
         nums = request.POST.get('nums')
         nums = nums.split(', ')
-        print(cab, nums)
         submit_to_db = cabinets(cabinet=cab, hard=nums)
         submit_to_db.save()
         return redirect("list:index")
