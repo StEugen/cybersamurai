@@ -3,28 +3,23 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'list/index.css' %}" />
 <script src="{% static 'index.js' %}"></script>
-<script src="https://unpkg.com/htmx.org@1.8.4"></script>
+
 <main>
     {% csrf_token %}
-    <div class="blue""></div>
+
     {% for item in cabinets %}
-
-        <ul class="list">
-            <li>
-                <button type="submit">{{ item.cabinet }}</button>
-            </li>
-        </ul>
+        <button onclick="showItems()">{{ item.cabinet }}</button>
+    {% endfor %}
     
-
+    {% for item in cabinets %}
     <div id="text">
-        
         {% for thing in item.hard %}
-        <p>
+        <p class="text2">
             {{ thing }}
         </p>
         {% endfor %}
     </div>
-
     {% endfor %}
+
 </main>
 {% endblock %}

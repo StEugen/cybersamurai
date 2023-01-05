@@ -1,14 +1,8 @@
-function show(param){
-    if(param==0){
-        document.getElementById('text').style.display = 'block'
-        document.getElementById('text2').style.display = 'none'
-    }
-    else if(param==1){
-        document.getElementById('text2').style.display = 'block'
-        document.getElementById('text').style.display = 'none'
-    }
-}
 
-function showThing(thing){
-    document.getElementById('thing').innerHTML = thing;
+function showItems(){
+    var elems = document.getElementsByClassName('text')
+    for (var i = 0; i < elems.length; i++){
+        elems[i].style.display = 'block';
+    }
+
 }

@@ -4,8 +4,11 @@ from list.models import *
 
 def index(request):
     data = cabinets.objects.all()
-    context = {
-        'cabinets': data
-    }
+    return render(request, 'index.html', { 'cabinets': data })
 
-    return render(request, 'index.html', context)
+
+
+def display(request):
+    if request.method == "POST":
+        data = cabinets.objects.all()
+        return HttpResponse(data)
