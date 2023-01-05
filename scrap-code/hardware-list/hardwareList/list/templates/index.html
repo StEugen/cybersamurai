@@ -2,19 +2,26 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'list/index.css' %}" />
-<script src="{% static 'index.js' %}"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".text2").hide();
+        $(".button").click(function(){
+            $(".text2").show();
+        })
+    })    
+</script>
 <main>
     {% csrf_token %}
 
     {% for item in cabinets %}
-        <button onclick="showItems()">{{ item.cabinet }}</button>
+        <button class="button">{{ item.cabinet }}</button>
     {% endfor %}
     
     {% for item in cabinets %}
     <div id="text">
         {% for thing in item.hard %}
-        <p class="text2">
+        <p class="text2" id="{{text}}">
             {{ thing }}
         </p>
         {% endfor %}

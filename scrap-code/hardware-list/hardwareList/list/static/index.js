@@ -1,8 +1,7 @@
 
-function showItems(){
-    var elems = document.getElementsByClassName('text')
-    for (var i = 0; i < elems.length; i++){
-        elems[i].style.display = 'block';
-    }
-
-}
+$(document).ready(function(){
+    $(".text2").hide();
+    $(".button").click(function(){
+        $(".text2").show();
+    })
+})
