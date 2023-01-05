@@ -7,6 +7,5 @@ class cabinets(models.Model):
     hard = ArrayField(
         models.TextField(unique=True, null=False)
     )
-    hardware = JSONField()
 
    
