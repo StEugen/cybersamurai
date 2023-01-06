@@ -15,7 +15,8 @@
     {% csrf_token %}
     <a href="cabinet_adding/"><i class="fa-regular fa-square-plus"></i></a>
     {% for item in cabinets %}
-        <button class="button">{{ item.cabinet }}</button>
+        <button class="button">{{ item.cabinet }}</button><a href="{% url 'list:delete-cabinet' item.id %} ">
+            <i class="fa-regular fa-trash-can"></i></a>
     {% endfor %}
     
     {% for item in cabinets %}

@@ -1,9 +1,6 @@
 ## this is just neeeded for some record keeping of hardware 
-STEP ONE
-1) put cabinet
-2) put what computers are in this cabinet
-
-STEP TWO
-1) take from .xslx
+1) Add edit of cabinet and of elements inside
+2) take from .xslx
+3) add css
 
 search by id, search by cabinet

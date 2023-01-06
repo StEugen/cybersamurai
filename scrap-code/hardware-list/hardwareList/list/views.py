@@ -19,5 +19,9 @@ def add(request):
         nums = nums.split(', ')
         submit_to_db = cabinets(cabinet=cab, hard=nums)
         submit_to_db.save()
-        return redirect("list:index")
+        return redirect("list:cabinet_adding")
     
+def delete_cabinet(request, cabinet_id):
+    instance = cabinets.objects.get(id=cabinet_id)
+    instance.delete()
+    return redirect("list:index")
