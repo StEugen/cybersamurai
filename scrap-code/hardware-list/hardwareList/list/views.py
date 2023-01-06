@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from list.models import *
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.middleware.csrf import get_token
 from django.contrib.auth.decorators import user_passes_test
 
@@ -14,6 +14,7 @@ def index(request):
         'cabinets': cabs,
         'hardware': hard 
     })
+
 
 
 @user_passes_test(lambda u: u.is_superuser)

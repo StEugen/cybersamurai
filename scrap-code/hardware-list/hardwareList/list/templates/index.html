@@ -14,19 +14,22 @@
 <main>
     {% csrf_token %}
     <a href="admin/list/hardware/add/"><i class="fa-regular fa-square-plus"></i></a>
-    {% for item in cabinets %}
+
+    <!--{% for item in cabinets %}
         <button class="button">{{ item.cabinet }}</button><a href="{% url 'list:delete-cabinet' item.id %} ">
             <i class="fa-regular fa-trash-can"></i></a>
+    {% endfor %}-->
+    {% for item in cabinets %}
+    <a href="javascript:void(0);" data-url="{% url 'list:get-list' item.id %}"></a>
     {% endfor %}
-        
-    
-    {% for item in hardware %}
+
+    <!--{% for item in hardware %}
     <div id="text">
         <p class="text2">
         {{ item }}
         </p>
     </div>
-    {% endfor %}
-
+    {% endfor %}-->
+    
 </main>
 {% endblock %}
