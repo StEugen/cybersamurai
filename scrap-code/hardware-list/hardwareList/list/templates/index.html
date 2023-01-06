@@ -18,14 +18,24 @@
         <button class="button">{{ item.cabinet }}</button><a href="{% url 'list:delete-cabinet' item.id %} ">
             <i class="fa-regular fa-trash-can"></i></a>
     {% endfor %}
+        
     
     {% for item in cabinets %}
     <div id="text">
+        <div id="hard">
         {% for thing in item.hard %}
         <p class="text2">
             {{ thing }}
         </p>
         {% endfor %}
+        </div>
+        <div id="hardnum">
+        {% for thing in item.hardware_number %}
+        <p class="text2">
+            {{ thing }}
+        </p>
+        {% endfor %}
+        </div>
     </div>
     {% endfor %}
 

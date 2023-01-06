@@ -4,7 +4,18 @@ button{
 
 #text{
     text-align: center;
+    width: 500px;
+    overflow: hidden;
+    margin: auto;
 }
 
+#hard{
+    width: 300px;
+    float:left; 
+}
+
+#hardnum{
+    overflow: hidden;
+}
 
 
