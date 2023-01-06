@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import user_passes_test
 @user_passes_test(lambda u: u.is_superuser)
 def index(request):
     cabs = cabinets.objects.all()
+    cabid = request.POST.get('cabid')
     hard = Hardware.objects.all()
     return render(request, 'index.html', { 
         'cabinets': cabs,

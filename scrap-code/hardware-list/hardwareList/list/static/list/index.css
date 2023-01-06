@@ -1,4 +1,12 @@
+html, body{
+    background-color: #6B728E;
+}
+
 button{
+    display: block;
+}
+
+.button{
     display: block;
 }
 
