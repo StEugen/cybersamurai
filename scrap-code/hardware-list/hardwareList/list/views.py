@@ -15,9 +15,12 @@ def cabinet_adding(request):
 def add(request):
     if request.method =='POST':
         cab = request.POST.get('cab_num')
+        name = request.POST.get('name')
         nums = request.POST.get('nums')
+        name = name.split(', ')
         nums = nums.split(', ')
-        submit_to_db = cabinets(cabinet=cab, hard=nums)
+        submit_to_db = cabinets(cabinet=cab, hard=name,
+        hardware_number=nums)
         submit_to_db.save()
         return redirect("list:cabinet_adding")
     

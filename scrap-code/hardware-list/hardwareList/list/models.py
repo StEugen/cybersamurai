@@ -10,6 +10,9 @@ class cabinets(models.Model):
     hardware_number = ArrayField(
         models.TextField(unique=True, null=False)
     )
+
+    def __str__(self):
+        return self.cabinet
     
 
    
