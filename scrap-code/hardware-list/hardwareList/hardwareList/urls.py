@@ -16,7 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+admin.site.site_header = 'Admin panel'
+admin.site.index_title = 'Admin area'                
+admin.site.site_title = 'HardwareList app'
+
+
 urlpatterns = [
-    path('list/', include('list.urls', namespace='list')),
+    path('', include('list.urls', namespace='list')),
     path('admin/', admin.site.urls)
 ]
