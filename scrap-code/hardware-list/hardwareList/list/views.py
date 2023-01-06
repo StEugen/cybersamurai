@@ -1,14 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from list.models import *
-from django.shortcuts import redirect, get_object_or_404
-from django.middleware.csrf import get_token
+from django.shortcuts import redirect
+from django.views.generic import View, TemplateView
 from django.contrib.auth.decorators import user_passes_test
+
+
+class MainView(TemplateView):
+    template_name = 'index.html'
+
+class PostView(View):
+    def get(self, *args, **kwargs):
+        pass
+
 
 @user_passes_test(lambda u: u.is_superuser)
 def index(request):
     cabs = cabinets.objects.all()
-    cabid = request.POST.get('cabid')
     hard = Hardware.objects.all()
     return render(request, 'index.html', { 
         'cabinets': cabs,

@@ -19,10 +19,6 @@
         <button class="button">{{ item.cabinet }}</button><a href="{% url 'list:delete-cabinet' item.id %} ">
             <i class="fa-regular fa-trash-can"></i></a>
     {% endfor %}-->
-    {% for item in cabinets %}
-    <a href="javascript:void(0);" data-url="{% url 'list:get-list' item.id %}"></a>
-    {% endfor %}
-
     <!--{% for item in hardware %}
     <div id="text">
         <p class="text2">
@@ -30,6 +26,7 @@
         </p>
     </div>
     {% endfor %}-->
+
     
 </main>
 {% endblock %}
