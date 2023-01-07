@@ -2,28 +2,8 @@ html, body{
     background-color: #6B728E;
 }
 
-button{
-    display: block;
-}
-
-.button{
-    display: block;
-}
-
-#text{
-    text-align: center;
-    width: 500px;
-    overflow: hidden;
-    margin: auto;
-}
-
-#hard{
-    width: 300px;
-    float:left; 
-}
-
-#hardnum{
-    overflow: hidden;
+.not-visible{
+    display: none;
 }
 
 

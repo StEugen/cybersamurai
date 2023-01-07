@@ -3,17 +3,24 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'list/index.css' %}" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $(".text2").hide();
-        $(".button").click(function(){
-            $(".text2").show();
-        })
-    })    
-</script>
+<script src="{% static 'index.js' %}"></script>
+
 <main>
     {% csrf_token %}
-    <a href="admin/list/hardware/add/"><i class="fa-regular fa-square-plus"></i></a>
+    <a href="admin/list/"><i class="fa-regular fa-square-plus"></i></a>
+    <div id="cab-box">
+        {% for item in cabinets %}
+            <button class="btn btn-primary" id="load-btn-{{ item.id }}" value="{{ item.id }}">{{ item.cabinet }}</button>
+        {% endfor %}
+    </div>
+
+    <div id="loading" class="not-visible">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+    </div>
+
+    <div id="hard-box"></div>
 
     <!--{% for item in cabinets %}
         <button class="button">{{ item.cabinet }}</button><a href="{% url 'list:delete-cabinet' item.id %} ">
