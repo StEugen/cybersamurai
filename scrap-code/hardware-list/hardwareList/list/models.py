@@ -15,13 +15,6 @@ class Hardware(models.Model):
 
 class cabinets(models.Model):
     cabinet = models.TextField(unique=True, null=False)
-    #hardware = models.ForeignKey(Hardware, blank=True, null=True, on_delete=models.DO_NOTHING)
-   #hard = ArrayField(
-   #     models.TextField(unique=True, null=False)
-    #)
-    #hardware_number = ArrayField(
-    #    models.TextField(unique=True, null=False)
-    #)
 
     def __str__(self):
         return self.cabinet
