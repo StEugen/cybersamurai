@@ -1,16 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 html, body{
-    background-color: #6B728E;
+    background-color: #191A19;
+    font-family: 'Open Sans', sans-serif;
 }
 
-#cab-box{
+main{
+    margin: 10px;
+}
+
+#corner{
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    width: 150px;
+    height: 100%;
+    border-radius: 20px;
+    border: 2px solid #D8E9A8;
     top: 0;
     left: 0;
+}
+
+#add-cab-link{
+    margin-bottom: 15px;
+}
+
+
+#cab-box{
     display: block;
+    margin-top: 10px;
+}
+
+.fa-square-plus{
+    color: #4E9F3D !important;
 }
 
 .btn{
     display: block;
+    background-color: #1E5128 !important;
+    border-color: #1E5128 !important;
+    color: #4E9F3D !important;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    width: 80px;
 }
+
 
 .not-visible{
     display: none;
@@ -19,6 +51,12 @@ html, body{
 #loading{
     text-align: center;
 }
+
+.spinner-border{
+    border-color: #1E5128;
+}
+
+.sr-only{ border-color: #4E9F3D; }
 
 #hard-box{
     text-align: center;

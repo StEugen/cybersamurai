@@ -7,11 +7,14 @@
 
 <main>
     {% csrf_token %}
-    <a href="admin/list/"><i class="fa-regular fa-square-plus"></i></a>
-    <div id="cab-box">
-        {% for item in cabinets %}
-            <button class="btn btn-primary" id="load-btn-{{ item.id }}" value="{{ item.id }}">{{ item.cabinet }}</button>
-        {% endfor %}
+    <div id="corner">
+        <a href="admin/list/" id="add-cab-link"><i class="fa-regular fa-square-plus fa-2xl"></i></a>
+        <div id="cab-box">
+            {% for item in cabinets %}
+                <button class="btn btn-primary btn-outline-success" 
+                id="load-btn-{{ item.id }}" value="{{ item.id }}">{{ item.cabinet }}</button>
+            {% endfor %}
+        </div>
     </div>
 
     <div id="loading" class="not-visible">
