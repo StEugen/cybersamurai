@@ -1,12 +1,13 @@
-from django.shortcuts import render
 from django.http import JsonResponse
 from list.models import *
-from django.shortcuts import redirect
 from django.views.generic import View, TemplateView
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class MainView(TemplateView):
+
+
+class MainView(LoginRequiredMixin, TemplateView):
+    login_url = 'admin/'
     template_name = 'index.html'
     def get_context_data(self, **kwargs):
         context = super(MainView, self).get_context_data(**kwargs)
@@ -18,7 +19,7 @@ class MainView(TemplateView):
     
 
 
-class PostView(View):
+class PostView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
         hardware = list(Hardware.objects.values())
         cabs = list(cabinets.objects.values())
