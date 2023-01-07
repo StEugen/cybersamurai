@@ -20,7 +20,7 @@ const handleGetData = (x) =>{
                     if(data == x){
                         hardware.filter(item => item.cabinet_id === data).map(item =>{
                             console.log(item)
-                            hardBox.innerHTML += `<div class="card p-3 mt-3 mb-3">
+                            hardBox.innerHTML += `<div class="card text-white mb-3">
                                                     ${item.hardware_name}
                                                     <br>
                                                     ${item.hardware_number}

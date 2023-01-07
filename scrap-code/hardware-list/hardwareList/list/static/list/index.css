@@ -59,8 +59,23 @@ main{
 .sr-only{ border-color: #4E9F3D; }
 
 #hard-box{
+    padding: 20px;
     text-align: center;
     width: 400px;
     margin: auto;
+}
+
+.box-inside{
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    border: 2px solid #D8E9A8;
+    padding: 20px;
+}
+
+.card{
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    border: 2px solid #D8E9A8;
+    padding: 20px;
 }
 
