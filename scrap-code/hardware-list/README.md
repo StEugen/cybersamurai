@@ -1,7 +1,5 @@
 ## this is just neeeded for some record keeping of hardware 
-1) Add edit of cabinet and of elements inside
-2) take from .xslx
-3) add css
-
-search by id, search by cabinet
+Functionally done, but still there are things to be added
+## Things to add
+search by id, search by cabinet, take info from excel file
 
