@@ -1,8 +1,10 @@
 import json, pprint, re
 from urllib.request import Request, urlopen
+from datetime import datetime
 
 def teacher_json(sname, week):
     """ should read users input and produce id of teacher """
+    sname = sname
     f = open('files/jsonhere', 'w')
     req = Request(
         url=f'https://www.ulspu.ru/students/schedule/prepod/groups-{week}.json',
@@ -26,6 +28,7 @@ def get_json():
         headers={'User-Agent': 'Mozila/5.0'})
     site = urlopen(req)
     data = json.load(site)
+    #sorted_date = sorted(data, key=lambda x: datetime.strftime(x['date'], '%m/%d/%Y'))
     for item in data:
         for i in data[item]:
             text = f'date: {item}\n location: {i["location"]},\n group: {i["teachers"]},\n time: {i["time"]},\n subject: {i["subject"]},\n type: {i["type"]}\n\n'
