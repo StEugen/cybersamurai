@@ -17,4 +17,4 @@ Roy Fielding describes REST influence on scale:
 <br>
 Requirements to REST architecture:
 <ol>
-<li>Client-server model: </li> 
+<li>Client-server model: The first limitation applicable to the hybrid model is to bring the architecture to the client-server model. Differentation between needs is a principle.  </li> 
