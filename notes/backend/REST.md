@@ -18,5 +18,5 @@ Roy Fielding describes REST influence on scale:
 Requirements to REST architecture:
 <ol>
 <li>Client-server model: The first limitation applicable to the hybrid model is to bring the architecture to the client-server model. Differentation between needs is a principle. Separation of client's interface needs from server needs, storing data, increases transparation of client code to other platforms, and simplification of server-side increases scalability.The greatest influence on the World Wide Web has the very differentiation that allows individual parts to develop independently of each other, supporting the needs for the development of the Internet from various organizations </li>
-<li>No condition: </li>
+<li>No state: Protocol of interaction between client and server should keep next condition: between client requests no info about state kept on server (stateless protocol). All requests should be made so a server receives all the necessary data to complete a request. State of session saves on client side.</li>
  
