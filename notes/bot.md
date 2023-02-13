@@ -10,5 +10,9 @@ Bots can be: <br>
 - Social bots: Bots that operate on social media platforms
 - Malicious bots: Bots that scrape content, spread spam content, or carry out credential stuffing attacks
 <br>
+Schedule bot is a type of chat bot<br>
 
-## Schedule bot is a type of chat bot
+## Different python libraries
+1) python-telegram-bot
+2) pytelegrambotAPI
+3) aiogram
