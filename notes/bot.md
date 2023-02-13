@@ -13,6 +13,7 @@ Bots can be: <br>
 Schedule bot is a type of chat bot<br>
 
 ## Different python libraries
-1) python-telegram-bot
-2) pytelegrambotAPI
-3) aiogram
+1) <a href='https://github.com/python-telegram-bot/python-telegram-bot'>python-telegram-bot</a>
+2) <a href='https://github.com/eternnoir/pyTelegramBotAPI'>pytelegrambotAPI</a>
+3) <a href='https://github.com/aiogram/aiogram'>aiogram</a>
+
