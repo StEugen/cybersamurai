@@ -82,6 +82,11 @@ Places where webhooks work well include:<br>
 - On servers with SSL certificates.
 - On serverless platforms, such as cloud functions or programmable edge networks.
 <br>
+Webhooks have two components: the outbound side (sender) and the inbound side (recipient). The recipient is responsible for specifying the callback URI so that the sender knows where to send the asynchronous request.
+<br>
+The outbound side is typically associated with some sort of stimulus event that gets triggered in the server code. This could be an event such as a status change on an object like assigning a pull request, or the completion of a process like publishing a release. Think of it as subscribe and notify model where the subscription may be long lasting, or transient – created and expired for the duration of a single stimulus request.
+The inbound side of a webhook is the location or URI that the webhook is sent to. Recipients are expecting to receive webhooks and will take some form of action based on the contents of the received message. Hence, recipients of a webhook require setup and configuration to receive and handle the inbound request.
+
 
 
 ## Different python libraries
