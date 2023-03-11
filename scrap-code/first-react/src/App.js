@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import SearchBar from './searchBar';
+import EmailSubmit from './emailSubmit';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Hello world, fuckers</h1>
         <SearchBar />
+        <EmailSubmit />
       </header>
     </div>
   );
