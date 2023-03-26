@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}">
+
+<main>
+    <form method="POST" action="{{ url_for('addtask') }}" id="search">
+        <input type="text" name="title"  placeholder="title" required maxlength="30"/>
+        <input type="text" name="content"  placeholder="content" maxlength="255"/>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% for todo in todos %}
+        <article>
+            <h1>
+                {{ todo.title }}
+            </h1>
+            <p>
+                {{ todo.content }}
+            </p>
+            <form method="POST" action="{{ url_for('delete', id=todo.id) }}">
+                <button type="submit">Delete</button>
+            </form>
+            <form method="GET" action="{{ url_for('edit', id=todo.id) }}">
+                <button type="submit">Edit</button>
+            </form>
+        </article>
+    {% endfor %}
+</main>
+{% endblock %}
