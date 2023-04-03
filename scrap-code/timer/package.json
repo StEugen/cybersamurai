@@ -12,5 +12,8 @@
   "scripts": {
     "start": "electron .",
     "dist:windows": "electron-builder --windows"
+  },
+  "dependencies": {
+    "minimatch": "^8.0.3"
   }
 }
