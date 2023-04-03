@@ -1,0 +1,16 @@
+{
+  "name": "timer",
+  "version": "1.0.0",
+  "description": "timer",
+  "main": "main.js",
+  "author": "StEugen",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "electron": "23.2.1"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist:windows": "electron-builder --windows"
+  }
+}

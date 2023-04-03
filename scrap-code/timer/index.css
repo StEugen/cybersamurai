@@ -1,0 +1,9 @@
+*{
+    text-align: center;
+    justify-content: center;
+}
+
+#timer{
+    font-size: 25em;
+    text-align: center;
+}
