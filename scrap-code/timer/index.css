@@ -1,9 +1,13 @@
 *{
     text-align: center;
-    justify-content: center;
+    justify-items: center;
+}
+
+body{
+    margin-top: 8% !important;
 }
 
 #timer{
-    font-size: 25em;
+    font-size: 30em;
     text-align: center;
 }
