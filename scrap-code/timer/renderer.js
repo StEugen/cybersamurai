@@ -29,7 +29,7 @@ startButton.addEventListener('click', function() {
   const seconds = parseInt(secondsInput.value);
   countdownSeconds = (hours * 3600) + (minutes * 60) + seconds;
   if (countdownSeconds > 0) {
-    timerInterval = setInterval(updateTimer, 1040);
+    timerInterval = setInterval(updateTimer, 1000);
   }
 });
 

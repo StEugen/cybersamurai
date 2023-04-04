@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Electron Timer</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        font-size: 24px;
+        text-align: center;
+        margin-top: 100px;
+      }
+      input[type="number"] {
+        width: 60px;
+        font-size: 24px;
+        text-align: center;
+      }
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <label for="hours">Hours:</label>
+      <input type="number" id="hours" min="0" max="23" value="0">
+      <label for="minutes">Minutes:</label>
+      <input type="number" id="minutes" min="0" max="59" value="0">
+      <label for="seconds">Seconds:</label>
+      <input type="number" id="seconds" min="0" max="59" value="0">
+    </div>
+    <div id="timer">00:00:00.000</div>
+    <button id="startButton">Start</button>
+    <button id="stopButton" disabled>Stop</button>
+    <script src="renderer.js"></script>
+  </body>
+</html>
+

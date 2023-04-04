@@ -1,0 +1,16 @@
+{
+  "name": "electrontimer",
+  "version": "1.0.0",
+  "description": "timer written in electron",
+  "main": "main.js",
+  "author": "StEugen",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "electron": "^24.0.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist:windows": "electron-builder --windows"
+  }
+}
