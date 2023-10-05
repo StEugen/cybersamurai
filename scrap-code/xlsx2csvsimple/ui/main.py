@@ -76,7 +76,6 @@ class MainWindow(QMainWindow):
 
                 subprocess.run(["powershell", "-ExecutionPolicy", "Bypass", "-File", script_file_path])
 
-
                 os.remove(script_file_path)
             else:
                 QMessageBox.warning(self, "Warning", "Please enter both group and faculty.")
