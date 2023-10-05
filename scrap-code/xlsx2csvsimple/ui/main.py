@@ -1,6 +1,8 @@
 import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QFileDialog, QMessageBox
+from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QFileDialog, QMessageBox, QLabel, QLineEdit
 import xlsx2csv
+import subprocess
+import os
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -19,6 +21,24 @@ class MainWindow(QMainWindow):
 
         self.selected_file_path = None
 
+        self.run_shell_script_button = QPushButton("Run PowerShell Script", self)
+        self.run_shell_script_button.setGeometry(50, 180, 300, 30)
+        self.run_shell_script_button.clicked.connect(self.shell_script)
+
+        self.group_label = QLabel("Group:", self)
+        self.group_label.setGeometry(50, 100, 60, 30)
+        self.group_input = QLineEdit(self)
+        self.group_input.setGeometry(120, 100, 150, 30)
+
+        self.faculty_label = QLabel("Faculty:", self)
+        self.faculty_label.setGeometry(50, 140, 60, 30)
+        self.faculty_input = QLineEdit(self)
+        self.faculty_input.setGeometry(120, 140, 150, 30)
+
+        self.file_label = QLabel("Selected File: ", self)
+        self.file_label.setGeometry(50, 20, 300, 20)
+
+
     def select_file(self):
         file_dialog = QFileDialog()
         file_dialog.setNameFilter("Excel Files (*.xlsx);;All Files (*)")
@@ -27,14 +47,63 @@ class MainWindow(QMainWindow):
         if file_dialog.exec():
             file_name = file_dialog.selectedFiles()[0]
             self.selected_file_path = file_name
+            file_name_only = os.path.basename(file_name)
+            self.file_label.setText(f"Selected File: {file_name_only}")
+
 
     def run_script(self):
         if self.selected_file_path:
             try:
                 xlsx2csv.convert_excel_to_csv(self.selected_file_path)
+                self.file_label.clear()  # Clear the label when conversion is successful
                 QMessageBox.information(self, "Success", "Conversion completed.")
             except Exception as e:
                 QMessageBox.critical(self, "Error", f"An error occurred: {str(e)}")
+        else:
+            QMessageBox.warning(self, "Warning", "Please select an Excel file first.")
+
+
+    def shell_script(self):
+        if self.selected_file_path:
+            group = self.group_input.text()
+            faculty = self.faculty_input.text()
+
+            if group and faculty:
+                script_template = '''
+$UserList=IMPORT-CSV "C:\\SCUD 2023\\scudADwork.csv"
+
+FOREACH ($Person in $UserList) {{
+    $Domain="@ULSPU.RU"
+    $FullName=$Person.cn
+    $Company=$Person.company
+    $Department=$Person.department
+    $Description=$Person.description
+    $givenName=$Person.givenName
+    $initials=$Person.initials
+    $I=$Person.City
+    $sAMAccountName=$Person.sAMAccountName
+    $sn=$Person.sn
+    $userPrincipalName=$Person.sAMAccountName+$Domain
+    $userPassword=$Person.userPassword
+    $expire=$null
+
+    NEW-ADUSER -PassThru -Path "OU={group}, OU={faculty}, OU=Students, DC=ULSPU,DC=RU" -Enabled $True -AccountExpirationDate $expire -ChangePasswordAtLogon $False -AccountPassword (ConvertTo-SecureString $userPassword -AsPlainText -Force) -CannotChangePassword $True -City $I -Company $Company -Department $Department -Description $Description -DisplayName $FullName -GivenName $givenName -Initials $initials -Name $FullName -SamAccountName $sAMAccountName -Surname $sn -Title $Description -UserPrincipalName $userPrincipalName
+
+    Set-ADAccountControl $sAMAccountName -PasswordNeverExpires $True
+}}
+pause
+'''
+
+                script_file_path = "script.ps1"
+                with open(script_file_path, "w") as script_file:
+                    script_file.write(script_template.format(group=group, faculty=faculty))
+
+                subprocess.run(["powershell", "-ExecutionPolicy", "Bypass", "-File", script_file_path])
+
+
+                os.remove(script_file_path)
+            else:
+                QMessageBox.warning(self, "Warning", "Please enter both group and faculty.")
         else:
             QMessageBox.warning(self, "Warning", "Please select an Excel file first.")
 
