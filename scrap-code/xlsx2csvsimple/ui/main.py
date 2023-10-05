@@ -55,7 +55,7 @@ class MainWindow(QMainWindow):
         if self.selected_file_path:
             try:
                 xlsx2csv.convert_excel_to_csv(self.selected_file_path)
-                self.file_label.clear()  # Clear the label when conversion is successful
+                self.file_label.clear()
                 QMessageBox.information(self, "Success", "Conversion completed.")
             except Exception as e:
                 QMessageBox.critical(self, "Error", f"An error occurred: {str(e)}")
