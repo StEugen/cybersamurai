@@ -62,15 +62,13 @@ class MainWindow(QMainWindow):
         else:
             QMessageBox.warning(self, "Warning", "Please select an Excel file first.")
 
-
     def shell_script(self):
         if self.selected_file_path:
             group = self.group_input.text()
             faculty = self.faculty_input.text()
 
             if group and faculty:
-                script_template = '''
-'''
+                script_template = ''' '''
 
                 script_file_path = "script.ps1"
                 with open(script_file_path, "w") as script_file:
