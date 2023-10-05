@@ -8,7 +8,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Excel to CSV Converter")
+        self.setWindowTitle("Excel to CSV Converter and shell runner")
         self.setGeometry(100, 100, 400, 200)
 
         self.select_file_button = QPushButton("Select Excel File", self)
