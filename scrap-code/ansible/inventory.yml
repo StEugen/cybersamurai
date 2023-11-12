@@ -1,11 +1,4 @@
 All:
-
-  hosts:
-    Windows_Host:
-      ansible_host: 
-      ansible_user: 
-      ansible_password: 
-      ansible_connection: winrm
-      ansible_port: 5986
-      ansible_winrm_server_cert_validation: ignore
-
+        hosts:
+                Host1:
+                        ansible_host: 
