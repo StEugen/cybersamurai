@@ -93,7 +93,8 @@ cfssl gencert \
 
 
 ### Kubelet
-<pre>
+
+
 for instance in worker-0 worker-1; do
 cat > ${instance}-csr.json <<EOF
 {
@@ -113,7 +114,8 @@ cat > ${instance}-csr.json <<EOF
   ]
 }
 EOF
-</pre>
+
+
 EXTERNAL_IP=$(yc compute instance get ${instance} --format json | jq '.network_interfaces[0].primary_v4_address.one_to_one_nat.address' -r)
 
 INTERNAL_IP=$(yc compute instance get ${instance} --format json | jq '.network_interfaces[0].primary_v4_address.address' -r)
