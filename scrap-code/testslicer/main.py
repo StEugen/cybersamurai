@@ -27,7 +27,6 @@ def upload_json():
         with open('./store/data.json', 'w') as f:
             json.dump(data, f)
 
-        # Search for chapters in uploaded file
         with open(os.path.join('./store/', 'index.html'), 'r') as file:
             file_contents = file.read()
             found_chapters = [chapter for chapter in chapters if chapter in file_contents]
