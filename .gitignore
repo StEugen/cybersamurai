@@ -2,3 +2,5 @@
 *.pyc
 go.sum
 node_modules/
+scrap-code/testslicer/store/data.json
+scrap-code/testslicer/store/index.html
