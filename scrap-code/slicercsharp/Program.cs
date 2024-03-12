@@ -1,44 +1,30 @@
 using System;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;
-using DocumentFormat.OpenXml;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Spire.Doc;
 
-class Program
+namespace SplitDocument
 {
-    static void Main(string[] args)
+    class Program
     {
-        string inputFilePath = "input.docx";
-        string outputDirectory = "output/";
-
-        using (WordprocessingDocument doc = WordprocessingDocument.Open(inputFilePath, false))
+        static void Main(string[] args)
         {
-            int pageNumber = 1;
-
-            var extendedFilePropertiesPart = doc.ExtendedFilePropertiesPart;
-            if (extendedFilePropertiesPart != null)
+            Document document = new Document(); // Use '=' instead of '-' to assign a value
+            document.LoadFromFile(@"./input.docx");
+            Document newWord;
+            for (int i = 0; i < document.Sections.Count; i++) // Use '=' instead of '-' in the for loop
             {
-                Pages pages = extendedFilePropertiesPart.Properties.Pages;
-                int totalPages = pages ?? 0; // Make sure pages is not null
-                foreach (var element in doc.MainDocumentPart.Document.Body.Elements())
-                {
-                    if (element is Paragraph && pageNumber <= totalPages)
-                    {
-                        string outputFilePath = $"{outputDirectory}Page_{pageNumber}.docx";
-
-                        using (WordprocessingDocument outputDoc = WordprocessingDocument.Create(outputFilePath, WordprocessingDocumentType.Document))
-                        {
-                            MainDocumentPart mainPart = outputDoc.AddMainDocumentPart();
-                            mainPart.Document = new Document(new Body());
-                            mainPart.Document.Body.AppendChild((OpenXmlElement)element.Clone());
-                        }
-
-                        pageNumber++;
-                    }
-                }
+                newWord = new Document();
+                newWord.Sections.Add(document.Sections[i].Clone());
+                newWord.SaveToFile(String.Format(@"./out_{0}.docx", i)); // Use 'i' instead of '1' to have incremental file names
             }
         }
-
-        Console.WriteLine("Splitting completed successfully.");
     }
 }
+
+
+
+
 
