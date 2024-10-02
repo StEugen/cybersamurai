@@ -4,6 +4,9 @@ syntax on
 set autoindent
 set smartindent
 
+au InsertEnter * set paste
+au InsertLeave * set nopaste
+
 set tabstop=4        
 set shiftwidth=4     
 set expandtab        
