@@ -1,9 +1,0 @@
-# for exe files which need admin priveleges
-
-- name: Install app
-
-  hosts: Windows_Host
-  tasks:
-  - name: installation
-    raw: 'C:\path\to\file'
-      

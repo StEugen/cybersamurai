@@ -1,8 +1,0 @@
-- name: win_ping module test
-
-  hosts: Windows_Host
-  become: false
-  gather_facts: false
-  tasks:
-    - name: test connection
-      win_ping:

@@ -1,4 +1,0 @@
-All:
-        hosts:
-                Host1:
-                        ansible_host: 
