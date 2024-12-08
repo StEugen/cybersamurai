@@ -2,18 +2,33 @@
 
 scan_and_display_networks() {
   local networks=$(nmcli -t -f SSID,SIGNAL dev wifi list | sort -t: -k2 -n -r)
+  echo "$networks" >debug.log
+
   local menu_items=()
   while IFS=: read -r ssid signal; do
-    [ -n "$ssid" ] && menu_items+=("$ssid" "Signal: $signal")
+    if [ -n "$ssid" ]; then
+      menu_items+=("$ssid" "Signal: $signal")
+    fi
   done <<<"$networks"
-  dialog --menu "Select Wi-Fi Network" 20 50 10 "${menu_items[@]}" 2>/tmp/wifi_choice
+  echo "${menu_items[@]}" >>debug.log
+
+  if [ ${#menu_items[@]} -eq 0 ]; then
+    dialog --msgbox "No Wi-Fi networks found." 10 50
+    exit 1
+  fi
+
+  # Pass menu_items correctly to dialog
+  local choice
+  choice=$(dialog --menu "Select Wi-Fi Network" 20 60 15 "${menu_items[@]}" 2>&1 >/dev/tty)
+  echo "$choice" >/tmp/wifi_choice
+
   local exit_status=$?
   if [ $exit_status -ne 0 ]; then
     clear
-    echo "No network selected. Exiting."
+    echo "No network selected. Exiting." >>debug.log
     exit 1
   fi
-  cat /tmp/wifi_choice
+  echo "$choice"
 }
 
 connect_to_network() {
