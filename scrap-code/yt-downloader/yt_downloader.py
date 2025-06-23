@@ -13,7 +13,6 @@ import os
 from yt_dlp import YoutubeDL
 
 def build_opts(output_path: str, resolution: str = None, playlist: bool = False):
-
     if playlist:
         outtmpl = os.path.join(output_path, '%(playlist_title)s', '%(title)s.%(ext)s')
     else:
@@ -32,7 +31,13 @@ def build_opts(output_path: str, resolution: str = None, playlist: bool = False)
         'ignoreerrors': True,
         'quiet': False,
         'no_warnings': True,
+        'merge_output_format': 'mp4',
+        'postprocessors': [{
+            'key': 'FFmpegVideoConvertor',
+            'preferedformat': 'mp4',
+        }]
     }
+
 
 def download_urls(urls, output_path: str, resolution: str = None, playlist: bool = False):
     opts = build_opts(output_path, resolution, playlist)
