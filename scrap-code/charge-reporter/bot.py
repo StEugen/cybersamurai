@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-battery_bot.py
+bot.py
 
 Run from cron (e.g. every 5 minutes). No suppression — script exits after one check.
 
