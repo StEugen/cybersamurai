@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+VULN_FILE=${1:-vulns.txt}
+if [ ! -f "$VULN_FILE" ]; then
+  echo "Usage: $0 vulns.txt"
+  exit 2
+fi
+
+# temp file for installed packages list
+TMP_INSTALLED="$(mktemp)"
+trap 'rm -f "$TMP_INSTALLED"' EXIT
+
+echo "Scanning node_modules for installed package versions..."
+# Find every package.json under node_modules and output "name version"
+# suppress errors from unreadable files
+find node_modules -type f -name package.json -print0 2>/dev/null \
+  | xargs -0 -n1 jq -r '.name + " " + .version' 2>/dev/null > "$TMP_INSTALLED" || true
+
+if [ ! -s "$TMP_INSTALLED" ]; then
+  echo "No installed packages found under node_modules (or node_modules missing)."
+fi
+
+echo
+echo "Checking declared versions in package-lock.json (if present)..."
+if [ -f package-lock.json ] && command -v jq >/dev/null 2>&1; then
+  # For npm package-lock v1/v2: gather top-level dependency names & versions
+  jq -r '
+    def collect_deps:
+      .dependencies? // {} | to_entries[] |
+      ( .key + " " + (.value.version // "") ),
+      ( .value | collect_deps );
+    collect_deps
+  ' package-lock.json 2>/dev/null | sort -u > "$TMP_INSTALLED.lock" || true
+  if [ -s "$TMP_INSTALLED.lock" ]; then
+    echo "Found declared packages in package-lock.json (saved to $TMP_INSTALLED.lock)."
+  else
+    echo "package-lock.json parsed but no dependencies found (or jq couldn't parse)."
+  fi
+else
+  echo "No package-lock.json or jq not available — skipping declared-version check."
+fi
+
+echo
+echo "Now testing each vulnerable-range from $VULN_FILE..."
+
+while IFS= read -r line || [ -n "$line" ]; do
+  # skip blank lines / comments
+  line="${line%%#*}"
+  line="${line//[[:space:]]/}"
+  [ -z "$line" ] && continue
+
+  pkg="${line%%:*}"
+  range="${line#*:}"
+  if [ -z "$pkg" ] || [ -z "$range" ]; then
+    echo "skipping malformed line: $line"
+    continue
+  fi
+
+  echo
+  echo "==> $pkg : vulnerable range = $range"
+
+  if [ -f "$TMP_INSTALLED.lock" ]; then
+    declared_versions=$(rg -F "^${pkg} " "$TMP_INSTALLED.lock" -n --no-line-number 2>/dev/null || true)
+    if [ -n "$declared_versions" ]; then
+      echo "  Declared in package-lock.json:"
+      echo "$declared_versions" | while read -r dv; do
+        ver=$(echo "$dv" | awk '{print $2}')
+        if npx -y semver "$ver" -r "$range" >/dev/null 2>&1; then
+          echo "    -> VULNERABLE (declared): $ver matches $range"
+        else
+          echo "    -> OK (declared): $ver"
+        fi
+      done
+    else
+      echo "  Not declared in package-lock.json."
+    fi
+  fi
+
+  installed_matches=$(rg -F "^${pkg} " "$TMP_INSTALLED" -n --no-line-number 2>/dev/null || true)
+  if [ -n "$installed_matches" ]; then
+    echo "  Installed copies found:"
+    echo "$installed_matches" | while read -r im; do
+      ver=$(echo "$im" | awk '{print $2}')
+      if npx -y semver "$ver" -r "$range" >/dev/null 2>&1; then
+        echo "    -> VULNERABLE (installed): $ver matches $range"
+      else
+        echo "    -> OK (installed): $ver"
+      fi
+    done
+  else
+    echo "  No installed copies found under node_modules."
+  fi
+
+  if command -v npm >/dev/null 2>&1; then
+    topver=$(npm ls "$pkg" --json 2>/dev/null | jq -r '.dependencies["'"$pkg"'"].version // empty' 2>/dev/null || true)
+    if [ -n "$topver" ]; then
+      if npx -y semver "$topver" -r "$range" >/dev/null 2>&1; then
+        echo "  -> VULNERABLE (npm ls top-level): $topver matches $range"
+      else
+        echo "  -> OK (npm ls top-level): $topver"
+      fi
+    fi
+  fi
+
+done < "$VULN_FILE"
+
+echo
+echo "Scan complete."
+
